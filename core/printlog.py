@@ -1,15 +1,10 @@
-def printlog(update, msg_type):
+from datetime import datetime
+from telegram import Update
+
+
+def printlog(update: Update, message_type):
     username = update.message.from_user.username
-    content = ""
+    time_string = datetime.now().strftime("%Y-%m-%d_%H:%M")
 
-    print("Type: ", msg_type, "\nUsername: ", username)
+    print(f"{time_string} @{username} {message_type}")
 
-    if msg_type == "msg_sticker":
-        content = update.message.sticker.file_id
-    elif msg_type == "msg_text":
-        content = update.message.text
-
-    if content != "":
-        print("Content: ", content)
-
-    print()

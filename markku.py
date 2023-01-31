@@ -3,37 +3,18 @@
 from os import environ
 from environs import Env
 
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import (
-    BaseFilter,
-    CommandHandler,
-    Filters,
-    MessageHandler,
-    Updater,
-    CallbackQueryHandler,
-)
+from telegram.ext import ApplicationBuilder, CommandHandler
 
-from command_router import CommandRouter
+from commands import start, darkroom
 
 
-def handlers(updater):
-    dp = updater.dispatcher
-
-    # Alustetaan routerit
-    cr = CommandRouter()
-
-    # Komennot
-    dp.add_handler(CommandHandler(cr.get_commands(), cr.route_command, pass_args=True))
-
-
-def main():
+if __name__ == '__main__':
     env = Env()
     env.read_env()
 
-    updater = Updater(token=environ["TG_TOKEN"])
-    handlers(updater)
+    application = ApplicationBuilder().token(environ["TG_TOKEN"]).build()
 
-    updater.start_polling()
+    application.add_handler(CommandHandler('start', start))
+    application.add_handler(CommandHandler('darkroom', darkroom))
 
-
-main()
+    application.run_polling()
