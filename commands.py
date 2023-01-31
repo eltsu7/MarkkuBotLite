@@ -26,11 +26,11 @@ class SensorEntry:
         return self.__insert_time
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    printlog(update, "/start")
+    await printlog(update, "/start")
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Woof woof!")
 
 async def darkroom(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    printlog(update, "/darkroom")
+    await printlog(update, "/darkroom")
     await context.bot.send_message(chat_id=update.effective_chat.id, text=get_darkroom_message())
 
 # Lukee netistä valosensorin datan ja kertoo onko kerhohuoneella valot päällä
