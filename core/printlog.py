@@ -10,5 +10,4 @@ def printlog(update: Update = None, message: str = ""):
 
     log_message += " " + message
 
-    print(log_message)
-
+    print(log_message, flush=True)
