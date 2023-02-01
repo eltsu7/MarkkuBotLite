@@ -1,14 +1,12 @@
 import json
 
 from telegram import Update
-from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
+from telegram.ext import ContextTypes
 from urllib.request import urlopen
 from urllib.error import URLError
 from os import environ
-import logging
 
 from core.printlog import printlog
-from core.get_ids import get_ids
 
 class SensorEntry:
     def __init__(self, name, value, insert_time):
