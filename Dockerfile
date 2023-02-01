@@ -1,4 +1,3 @@
-# Parent image
 FROM python:3.10-slim
 
 COPY . /
