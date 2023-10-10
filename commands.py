@@ -61,7 +61,7 @@ def handle_sensor(sensor_data):
     )
 
 def get_light_message(light_sensor_entry: SensorEntry):
-    if light_sensor_entry.value() > 0:
+    if light_sensor_entry.value() > 15:
         return "Someone is in the darkroom 😊"
 
     return "Darkroom is empty ☹️"
